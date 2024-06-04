@@ -1,11 +1,31 @@
 /* eslint-disable */
 import "bootstrap";
 import "./style.css";
-
+import "./index.html";
 import "./assets/img/rigo-baby.jpg";
 import "./assets/img/4geeks.ico";
 
-window.onload = function() {
+function getAllDomain() {
+  let pronouns = ["the", "my", "hers", "ours", "yours"];
+  let adjectives = ["great", "big", "small", "slimy", "hairy"];
+  let nouns = ["food", "computer", "car"];
+  let ends = [".com", ".net", ".org"];
+  const domainNames = [];
+  for (const pronoun of pronouns) {
+    for (const adjective of adjectives) {
+      for (const noun of nouns) {
+        for (const end of ends) {
+          const domainName = `${pronoun}${adjective}${noun}${end}`;
+          domainNames.push(domainName);
+        }
+      }
+    }
+  }
+  return domainNames;
+}
+
+window.onload = () => {
   //write your code here
-  console.log("Hello Rigo from the console!");
+  const li = document.querySelector("#domain");
+  li.innerHTML = getAllDomain();
 };
